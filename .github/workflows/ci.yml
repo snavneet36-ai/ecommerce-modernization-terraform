@@ -41,7 +41,15 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: |
+          terraform plan \
+            -var="project_name=ecommerce-modernization" \
+            -var="environment=dev" \
+            -var="location=Central India"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          terraform apply -auto-approve \
+            -var="project_name=ecommerce-modernization" \
+            -var="environment=dev" \
+            -var="location=Central India"
