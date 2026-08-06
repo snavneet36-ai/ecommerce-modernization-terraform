@@ -12,4 +12,3 @@ resource "azurerm_key_vault" "kv" {
   tags = local.common_tags
 }
 
-data "azurerm_client_config" "current" {}
