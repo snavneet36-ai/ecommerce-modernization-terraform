@@ -16,10 +16,12 @@ resource "azurerm_linux_web_app" "app" {
 
   service_plan_id = azurerm_service_plan.app.id
 
+  virtual_network_subnet_id = azurerm_subnet.app.id
+
   identity {
     type = "SystemAssigned"
   }
-
+   
   site_config {
     app_command_line = "gunicorn --bind=0.0.0.0:8000 app:app"
 

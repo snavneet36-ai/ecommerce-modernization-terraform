@@ -5,6 +5,7 @@ resource "azurerm_virtual_network" "main" {
 
   address_space = ["10.10.0.0/16"]
 
+
   tags = local.common_tags
 }
 
@@ -14,4 +15,12 @@ resource "azurerm_subnet" "app" {
   virtual_network_name = azurerm_virtual_network.main.name
 
   address_prefixes = ["10.10.1.0/24"]
+
+  delegation {
+    name = "app-service-delegation"
+
+    service_delegation {
+      name = "Microsoft.Web/serverFarms"
+    }
+  }
 }
