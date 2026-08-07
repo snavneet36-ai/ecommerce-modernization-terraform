@@ -21,7 +21,7 @@ resource "azurerm_linux_web_app" "app" {
   identity {
     type = "SystemAssigned"
   }
-   
+
   site_config {
     app_command_line = "gunicorn --bind=0.0.0.0:8000 app:app"
 
